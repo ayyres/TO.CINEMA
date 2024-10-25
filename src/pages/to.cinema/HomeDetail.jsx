@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 const Detail = () => {
   const { id } = useParams();
-  const [detail, setdetail] = useState();
+  const [detail, setdetail] = useState(); 
 
   const headers = useMemo(
     () => ({
@@ -57,51 +57,45 @@ const Detail = () => {
   }, [id, headers]);
 
   return (
-    <div className="dark:bg-black dark:text-white bg-white text-black">
-      <div className="card card-side shadow-xl dark:bg-black dark:text-white bg-white text-black">
-        <figure>
-          <img
-            src={"https://image.tmdb.org/t/p/w500" + detail?.poster_path}
-            alt="Movie"
-          />
-        </figure>
-        <div className="card-body">
-          <h2 className="card-title">{detail?.title}</h2>
-          <p>{detail?.overview}</p>
-          <div className="rating">
-            <input
-              type="radio"
-              name="rating-2"
-              className="mask mask-star-2 bg-orange-400"
-              onClick={() => Rating(2)}
+    <div className="dark:bg-black dark:text-white bg-white text-black min-h-screen py-8">
+      <div className="container mx-auto p-6">
+        <div className="card card-side flex flex-col md:flex-row shadow-xl dark:bg-black dark:text-white bg-white text-black rounded-lg overflow-hidden">
+          {/* Movie Poster */}
+          <figure className="md:w-1/3 w-full">
+            <img
+              src={"https://image.tmdb.org/t/p/w500" + detail?.poster_path}
+              alt={detail?.title}
+              className="object-cover w-full h-full"
             />
-            <input
-              type="radio"
-              name="rating-2"
-              className="mask mask-star-2 bg-orange-400"
-              onClick={() => Rating(4)}
-            />
-            <input
-              type="radio"
-              name="rating-2"
-              className="mask mask-star-2 bg-orange-400"
-              onClick={() => Rating(6)}
-            />
-            <input
-              type="radio"
-              name="rating-2"
-              className="mask mask-star-2 bg-orange-400"
-              onClick={() => Rating(8)}
-            />
-            <input
-              type="radio"
-              name="rating-2"
-              className="mask mask-star-2 bg-orange-400"
-              onClick={() => Rating(10)}
-            />
-          </div>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary">Watch</button>
+          </figure>
+
+          {/* Movie Details */}
+          <div className="card-body p-6 md:w-2/3">
+            <h2 className="card-title text-4xl font-bold mb-4">
+              {detail?.title}
+            </h2>
+            <p className="text-lg mb-4">{detail?.overview}</p>
+            
+            {/* Rating Section */}
+            <div className="rating flex items-center mb-6">
+              <span className="text-lg mr-4">Your Rating:</span>
+              {[2, 4, 6, 8, 10].map((ratingValue) => (
+                <input
+                  key={ratingValue}
+                  type="radio"
+                  name="rating-2"
+                  className="mask mask-star-2 bg-yellow-400 cursor-pointer"
+                  onClick={() => Rating(ratingValue)}
+                />
+              ))}
+            </div>
+
+            {/* Watch Button */}
+            <div className="card-actions justify-start">
+              <button className="btn btn-primary bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg shadow-md transition duration-300 ease-in-out">
+                Watch
+              </button>
+            </div>
           </div>
         </div>
       </div>

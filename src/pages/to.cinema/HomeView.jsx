@@ -3,7 +3,7 @@ import { File, SquarePlay } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const HomeView = ({  Populer,now_playing ,top_rating,up_coming}) => {
+const HomeView = ({ Populer, now_playing, top_rating, up_coming }) => {
   const [randomMovie, setRandomMovie] = useState(null);
   const [randomVideo, setRandomVideo] = useState(null);
   const randomVideos = async (id) => {
@@ -28,7 +28,9 @@ const HomeView = ({  Populer,now_playing ,top_rating,up_coming}) => {
   };
   useEffect(() => {
     if (now_playing?.results?.length > 0) {
-      const randomIndex = Math.floor(Math.random() * now_playing.results.length);
+      const randomIndex = Math.floor(
+        Math.random() * now_playing.results.length
+      );
       setRandomMovie(now_playing.results[randomIndex]);
       randomVideos(now_playing.results[randomIndex].id);
     }
@@ -91,12 +93,28 @@ const HomeView = ({  Populer,now_playing ,top_rating,up_coming}) => {
                         }
                         alt={item.title}
                       />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex justify-center items-center p-2 flex-col">
+                      <button className="text-white bg-violet-800 rounded-full p-3 hover:bg-violet-800 transition duration-300 ease-in-out">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={2}
+                            stroke="currentColor"
+                            className="w-6 h-6"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M14.752 11.168l-6.086-3.406A1 1 0 007 8.607v6.786a1 1 0 001.666.838l6.086-3.406a1 1 0 000-1.674z"
+                            />
+                          </svg>
+                        </button>
+                        <h2 className="text-lg font-bold text-white text-center drop-shadow-lg">
+                          {item.title}
+                        </h2>
+                      </div>
                     </figure>
-                    <div className="card-body p-3 dark:bg-black dark:text-white bg-white text-black">
-                      <h2 className="card-title text-lg font-semibold dark:bg-black dark:text-white bg-white text-black">
-                        {item.title}
-                      </h2>
-                    </div>
                   </div>
                 </Link>
               );
@@ -111,26 +129,41 @@ const HomeView = ({  Populer,now_playing ,top_rating,up_coming}) => {
             {now_playing?.results?.map((item, index) => {
               return (
                 <Link key={index} to={"/detail/" + item.id}>
-                <div
-                  key={index}
-                  className="card w-44 flex-shrink-0 bg-base-100 shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out"
-                >
-                  <figure className="h-[400x]">
-                    <img
-                      className="object-cover w-44 h-64"
-                      src={"https://image.tmdb.org/t/p/w500" + item.poster_path}
-                      alt={item.title}
-                    />
-                  </figure>
-                  <div className="card-body p-3 dark:bg-black dark:text-white bg-white text-black">
-                    <h2 className="card-title text-lg font-semibold dark:bg-black dark:text-white bg-white text-black">
-                      {item.title}
-                    </h2>
-                    <div className="card-actions justify-end">
-                      <button className="btn btn-primary btn-sm">Play</button>
-                    </div>
+                  <div
+                    key={index}
+                    className="card w-44 flex-shrink-0 bg-base-100 shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out"
+                  >
+                    <figure className="h-[400x]">
+                      <img
+                        className="object-cover w-44 h-64"
+                        src={
+                          "https://image.tmdb.org/t/p/w500" + item.poster_path
+                        }
+                        alt={item.title}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex justify-center items-center p-2 flex-col">
+                      <button className="text-white bg-violet-800 rounded-full p-3 hover:bg-violet-800 transition duration-300 ease-in-out">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={2}
+                            stroke="currentColor"
+                            className="w-6 h-6"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M14.752 11.168l-6.086-3.406A1 1 0 007 8.607v6.786a1 1 0 001.666.838l6.086-3.406a1 1 0 000-1.674z"
+                            />
+                          </svg>
+                        </button>
+                        <h2 className="text-lg font-bold text-white text-center drop-shadow-lg">
+                          {item.title}
+                        </h2>
+                      </div>
+                    </figure>
                   </div>
-                </div>
                 </Link>
               );
             })}
@@ -144,26 +177,41 @@ const HomeView = ({  Populer,now_playing ,top_rating,up_coming}) => {
             {top_rating?.results?.map((item, index) => {
               return (
                 <Link key={index} to={"/detail/" + item.id}>
-                <div
-                  key={index}
-                  className="card w-44 flex-shrink-0 bg-base-100 shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out"
-                >
-                  <figure className="h-[400x]">
-                    <img
-                      className="object-cover w-44 h-64"
-                      src={"https://image.tmdb.org/t/p/w500" + item.poster_path}
-                      alt={item.title}
-                    />
-                  </figure>
-                  <div className="card-body p-3 dark:bg-black dark:text-white bg-white text-black">
-                    <h2 className="card-title text-lg font-semibold dark:bg-black dark:text-white bg-white text-black">
-                      {item.title}
-                    </h2>
-                    <div className="card-actions justify-end">
-                      <button className="btn btn-primary btn-sm">Play</button>
-                    </div>
+                  <div
+                    key={index}
+                    className="card w-44 flex-shrink-0 bg-base-100 shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out"
+                  >
+                    <figure className="h-[400x]">
+                      <img
+                        className="object-cover w-44 h-64"
+                        src={
+                          "https://image.tmdb.org/t/p/w500" + item.poster_path
+                        }
+                        alt={item.title}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex justify-center items-center p-2 flex-col">
+                      <button className="text-white bg-violet-800 rounded-full p-3 hover:bg-violet-800 transition duration-300 ease-in-out">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={2}
+                            stroke="currentColor"
+                            className="w-6 h-6"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M14.752 11.168l-6.086-3.406A1 1 0 007 8.607v6.786a1 1 0 001.666.838l6.086-3.406a1 1 0 000-1.674z"
+                            />
+                          </svg>
+                        </button>
+                        <h2 className="text-lg font-bold text-white text-center drop-shadow-lg">
+                          {item.title}
+                        </h2>
+                      </div>
+                    </figure>
                   </div>
-                </div>
                 </Link>
               );
             })}
@@ -177,26 +225,41 @@ const HomeView = ({  Populer,now_playing ,top_rating,up_coming}) => {
             {up_coming?.results?.map((item, index) => {
               return (
                 <Link key={index} to={"/detail/" + item.id}>
-                <div
-                  key={index}
-                  className="card w-44 flex-shrink-0 bg-base-100 shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out"
-                >
-                  <figure className="h-[400x]">
-                    <img
-                      className="object-cover w-44 h-64"
-                      src={"https://image.tmdb.org/t/p/w500" + item.poster_path}
-                      alt={item.title}
-                    />
-                  </figure>
-                  <div className="card-body p-3 dark:bg-black dark:text-white bg-white text-black">
-                    <h2 className="card-title text-lg font-semibold dark:bg-black dark:text-white bg-white text-black">
-                      {item.title}
-                    </h2>
-                    <div className="card-actions justify-end">
-                      <button className="btn btn-primary btn-sm">Play</button>
-                    </div>
+                  <div
+                    key={index}
+                    className="card w-44 flex-shrink-0 bg-base-100 shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out"
+                  >
+                    <figure className="h-[400x]">
+                      <img
+                        className="object-cover w-44 h-64"
+                        src={
+                          "https://image.tmdb.org/t/p/w500" + item.poster_path
+                        }
+                        alt={item.title}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex justify-center items-center p-2 flex-col">
+                      <button className="text-white bg-violet-800 rounded-full p-3 hover:bg-violet-800 transition duration-300 ease-in-out">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={2}
+                            stroke="currentColor"
+                            className="w-6 h-6"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M14.752 11.168l-6.086-3.406A1 1 0 007 8.607v6.786a1 1 0 001.666.838l6.086-3.406a1 1 0 000-1.674z"
+                            />
+                          </svg>
+                        </button>
+                        <h2 className="text-lg font-bold text-white text-center drop-shadow-lg">
+                          {item.title}
+                        </h2>
+                      </div>
+                    </figure>
                   </div>
-                </div>
                 </Link>
               );
             })}

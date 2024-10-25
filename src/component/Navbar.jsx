@@ -1,10 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import ThemaContext from "../context/ThemaContext";
-import "./stylenavbar.scss";
 import {
   AlignJustify,
-  BellPlus,
-  BookOpenText,
   ChartNoAxesCombined,
   Film,
   Heart,
@@ -69,9 +66,9 @@ const Navbar = () => {
                 <AlignJustify />
               </label>
               <div className="flex-1 flex">
-                <a className="btn btn-ghost text-xl dark:bg-black dark:text-violet-800 bg-white text-black">
-                  TO.CINEMA
-                </a>
+              <Link to="/" className="btn btn-ghost text-xl dark:bg-black dark:text-violet-800 bg-white text-black">
+              TO.CINEMA
+            </Link>
               </div>
             </div>
             <li>
