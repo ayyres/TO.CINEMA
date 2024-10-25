@@ -7,7 +7,7 @@ const RatingView = ({ rating, HapusRating }) => {
     <div>
       <section>
         <h2 className="font-bold text-3xl p-4 dark:bg-black dark:text-white bg-white text-black">
-          🎞 Film Rated
+          🎞 Film Populer
         </h2>
         <div className="flex w-full overflow-x-auto gap-6 dark:bg-black dark:text-white bg-white text-black ">
           {rating?.map((item, index) => {
