@@ -83,36 +83,12 @@ const Navbar = () => {
                 Eksplor
               </Link>
             </li>
-            <li>
-              <a>
-                <Heart />
-                Favorite
-              </a>
-            </li>
             <hr className="my-6 mx-3 border-gray-200 dark:border-gray-600/50" />
             <li>
               <Link to={"/rating"}>
               <Star />
                 Rating Film
               </Link>
-            </li>
-            <li>
-              <a>
-                <History />
-                Histori
-              </a>
-            </li>
-            <li>
-              <a>
-                <Film />
-                Genre Film
-              </a>
-            </li>
-            <li>
-              <a>
-                <ChartNoAxesCombined />
-                Populer
-              </a>
             </li>
           </ul>
         </div>

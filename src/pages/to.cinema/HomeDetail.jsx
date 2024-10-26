@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 const Detail = () => {
   const { id } = useParams();
-  const [detail, setdetail] = useState(); 
+  const [detail, setDetail] = useState();
 
   const headers = useMemo(
     () => ({
@@ -28,10 +28,10 @@ const Detail = () => {
           },
         }
       );
-      if ((await response.data.status_code) == 1) {
-        alert("Berhasil Ditambahkan Ke Rating!");
-      } else if ((await response.data.status_code) == 12) {
-        alert("Rating Berhasil Di Update!");
+      if (response.data.status_code === 1) {
+        alert("Successfully added to rating!");
+      } else if (response.data.status_code === 12) {
+        alert("Rating updated successfully!");
       }
     } catch (error) {
       console.error(error);
@@ -43,11 +43,9 @@ const Detail = () => {
       try {
         const response = await axios.get(
           `https://api.themoviedb.org/3/movie/${id}`,
-          {
-            headers: headers,
-          }
+          { headers }
         );
-        setdetail(response.data);
+        setDetail(response.data);
       } catch (error) {
         console.error(error);
       }
@@ -75,7 +73,7 @@ const Detail = () => {
               {detail?.title}
             </h2>
             <p className="text-lg mb-4">{detail?.overview}</p>
-            
+
             {/* Rating Section */}
             <div className="rating flex items-center mb-6">
               <span className="text-lg mr-4">Your Rating:</span>
@@ -91,8 +89,8 @@ const Detail = () => {
             </div>
 
             {/* Watch Button */}
-            <div className="card-actions justify-start">
-              <button className="btn btn-primary bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg shadow-md transition duration-300 ease-in-out">
+            <div className="card-actions justify-start mt-4">
+              <button className="btn btn-primary bg-violet-800 hover:bg-violet-800 text-white font-bold py-2 px-6 rounded-lg shadow-md transition duration-300 ease-in-out">
                 Watch
               </button>
             </div>
